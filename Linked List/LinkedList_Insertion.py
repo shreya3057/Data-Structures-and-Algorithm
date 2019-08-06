@@ -20,19 +20,19 @@ class LinkedList:
     def insert_in_linkedlist(self,data,position):
         k=1
         newnode=ListNode(data)
-        p=self.head
+        temp=self.head
         # q=self.head
         #Insert at beginning
         if(position==1):
-            newnode.next=p
+            newnode.next=self.head
             self.head=newnode
         #Insert at specified position
-        while(k<position):
-            k=k+1
-            q=self.head
-            self.head=p.next
-        q.next=newnode
-        newnode.next=p
+        else:
+            while(k<position):
+                k=k+1
+                temp=temp.next
+            newnode.next=temp.next
+            temp.next=newnode
     
 if __name__=="__main__":
     list=LinkedList()
@@ -46,9 +46,9 @@ if __name__=="__main__":
     print("Linked List:")
     list.listprint()
     print("\n")
-    print("After insertion:")
+    print("Insert at beginning:")
     list.insert_in_linkedlist(8,1)
     list.listprint()
-    print("Specified position")
+    print("\n\nSpecified position")
     list.insert_in_linkedlist(95,3)
     list.listprint()
